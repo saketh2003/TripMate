@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TripMate AI — Your AI Travel Planner</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- BACKGROUND -->
+    <!-- ============================= -->
+
+    <div class="background">
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+
+        <div class="grid-overlay"></div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- NAVBAR -->
+    <!-- ============================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ✈️
+                </div>
+
+                <div class="logo-text">
+                    <strong>TripMate</strong>
+                    <span>AI Travel Planner</span>
+                </div>
+
+            </div>
+
+
+            <nav class="nav-links">
+
+                <a href="#planner">Planner</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it works</a>
+
+            </nav>
+
+
+            <div class="nav-status">
+
+                <span class="status-dot"></span>
+
+                AI Online
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!-- MAIN -->
+    <!-- ============================= -->
+
+    <main class="main-container">
+
+
+        <!-- ============================= -->
+        <!-- HERO -->
+        <!-- ============================= -->
+
+        <section class="hero-section">
+
+            <div class="hero-badge">
+
+                <span>✦</span>
+
+                Powered by Multi-Agent AI
+
+            </div>
+
+
+            <h1>
+
+                Your next adventure,
+                <span>planned by AI.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Tell TripMate where you want to go, your budget,
+                and how long you want to stay. Our AI agents take
+                care of the rest.
+
+            </p>
+
+
+            <div class="hero-stats">
+
+                <div class="stat">
+
+                    <strong>✈️</strong>
+
+                    <div>
+                        <b>Flights</b>
+                        <span>Search & compare</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>🏨</strong>
+
+                    <div>
+                        <b>Hotels</b>
+                        <span>Find stays</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>🗺️</strong>
+
+                    <div>
+                        <b>Itinerary</b>
+                        <span>Day-by-day plans</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- PLANNER -->
+        <!-- ============================= -->
+
+        <section id="planner" class="planner-section">
+
+            <div class="planner-card">
+
+
+                <!-- CARD HEADER -->
+
+                <div class="planner-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            ✨ AI TRIP PLANNER
+                        </div>
+
+                        <h2>
+                            Where are you dreaming of going?
+                        </h2>
+
+                        <p>
+                            Describe your perfect trip in your own words.
+                            TripMate will build the plan for you.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ai-badge">
+
+                        <span class="pulse"></span>
+
+                        AI Ready
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- INPUT -->
+
+                <div class="input-wrapper">
+
+                    <textarea id="userInput"
+                        placeholder="Example: Plan a 7-day Japan trip from Hyderabad for ₹2,00,000 including flights, hotels, food and sightseeing..."></textarea>
+
+
+                    <div class="input-footer">
+
+                        <span class="input-hint">
+                            💡 Try mentioning your budget, dates and interests
+                        </span>
+
+
+                        <span class="character-count">
+                            AI-powered
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- GENERATE BUTTON -->
+
+                <button id="sendBtn" class="generate-btn" onclick="sendMessage()">
+
+                    <span id="btnText">
+
+                        <span class="button-icon">✦</span>
+
+                        Generate My Trip
+
+                    </span>
+
+                    <span id="btnLoader" class="loader hidden"></span>
+
+                </button>
+
+
+
+                <!-- QUICK PROMPTS -->
+
+                <div class="quick-section">
+
+                    <span class="quick-title">
+                        Or start with an idea
+                    </span>
+
+
+                    <div class="quick-prompts">
+
+                        <button
+                            onclick="setPrompt('Plan a complete 7 days Japan trip from Hyderabad including flights, hotels, food and sightseeing under ₹2,00,000.')">
+
+                            🇯🇵
+                            <span>
+                                <b>Japan</b>
+                                <small>7 days</small>
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            onclick="setPrompt('Plan a 5 days Dubai trip from Hyderabad with flights, hotels, sightseeing and a complete budget.')">
+
+                            🇦🇪
+                            <span>
+                                <b>Dubai</b>
+                                <small>5 days</small>
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            onclick="setPrompt('Plan a 7 days Thailand trip from Hyderabad with budget hotels, flights, beaches and sightseeing.')">
+
+                            🇹🇭
+                            <span>
+                                <b>Thailand</b>
+                                <small>7 days</small>
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            onclick="setPrompt('Give me available flight information for international destinations.')">
+
+                            🌎
+                            <span>
+                                <b>Explore</b>
+                                <small>Global flights</small>
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- FEATURES -->
+        <!-- ============================= -->
+
+        <section id="features" class="features-section">
+
+            <div class="section-heading">
+
+                <span>WHY TRIPMATE</span>
+
+                <h2>
+                    Your entire trip.
+                    <em>One AI.</em>
+                </h2>
+
+            </div>
+
+
+            <div class="features-grid">
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ✈️
+                    </div>
+
+                    <h3>
+                        Flight Intelligence
+                    </h3>
+
+                    <p>
+                        Search flight information and discover
+                        routes that fit your travel plans.
+                    </p>
+
+                    <span class="feature-number">
+                        01
+                    </span>
+
+                </div>
+
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🏨
+                    </div>
+
+                    <h3>
+                        Smart Hotel Search
+                    </h3>
+
+                    <p>
+                        Find accommodation options based on
+                        your destination and budget.
+                    </p>
+
+                    <span class="feature-number">
+                        02
+                    </span>
+
+                </div>
+
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        AI Travel Planning
+                    </h3>
+
+                    <p>
+                        Multiple AI agents work together to
+                        build your personalized itinerary.
+                    </p>
+
+                    <span class="feature-number">
+                        03
+                    </span>
+
+                </div>
+
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Download Your Plan
+                    </h3>
+
+                    <p>
+                        Save your complete travel itinerary
+                        as a beautifully formatted PDF.
+                    </p>
+
+                    <span class="feature-number">
+                        04
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- HOW IT WORKS -->
+        <!-- ============================= -->
+
+        <section id="how-it-works" class="how-section">
+
+            <div class="section-heading">
+
+                <span>HOW IT WORKS</span>
+
+                <h2>
+                    From idea to itinerary
+                    <em>in seconds.</em>
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Tell us your dream trip
+                        </h3>
+
+                        <p>
+                            Destination, budget, duration,
+                            interests — just describe it naturally.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            AI agents get to work
+                        </h3>
+
+                        <p>
+                            LangGraph coordinates specialized
+                            agents for flights, hotels and planning.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Receive your itinerary
+                        </h3>
+
+                        <p>
+                            Get a complete day-by-day travel plan
+                            ready for your next adventure.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- RESULT -->
+        <!-- ============================= -->
+
+        <section id="resultSection" class="result-section hidden">
+
+            <div class="result-card">
+
+                <div class="result-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            ✦ YOUR AI-GENERATED TRIP
+                        </div>
+
+                        <h2>
+                            Your Travel Plan
+                        </h2>
+
+                        <p id="threadInfo">
+                            Thread ID: -
+                        </p>
+
+                    </div>
+
+
+                    <div class="result-actions">
+
+                        <button class="copy-btn" onclick="copyResult()">
+                            📋 Copy
+                        </button>
+
+
+                        <button class="download-btn" onclick="downloadPDF()">
+                            📄 Download PDF
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div id="pdfContent" class="pdf-content">
+
+                    <h1 class="pdf-title">
+                        TripMate AI
+                    </h1>
+
+                    <div id="resultBox" class="result-box"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- ERROR -->
+        <!-- ============================= -->
+
+        <section id="errorBox" class="error-box hidden"></section>
+
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+
+                ✈️ <strong>TripMate AI</strong>
+
+                <span>
+                    Your intelligent travel companion.
+                </span>
+
+            </div>
+
+
+            <div class="footer-tech">
+
+                Built with
+
+                <span>FastAPI</span>
+                <span>LangGraph</span>
+                <span>Groq</span>
+                <span>PostgreSQL</span>
+                <span>Tavily</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 TripMate AI · Built for smarter travel
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ============================= -->
+    <!-- LIBRARIES -->
+    <!-- ============================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
